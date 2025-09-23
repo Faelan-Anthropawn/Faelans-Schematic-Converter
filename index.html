@@ -68,11 +68,10 @@
     </div>
   </div>
 </div>
-
 <script>
 async function loadChangelog() {
   try {
-    const res = await fetch("changelog.txt");
+    const res = await fetch("https://raw.githubusercontent.com/Faelan-Anthropawn/Schematic-Converter-Website/refs/heads/main/changelog.txt");
     const text = await res.text();
     const lines = text.split(/\r?\n/).filter(Boolean);
     if (lines.length > 0) {
@@ -92,5 +91,7 @@ async function loadChangelog() {
 }
 loadChangelog();
 </script>
+
+
 </body>
 </html>
