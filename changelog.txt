@@ -1,39 +1,12 @@
 https://control.sparkedhost.us/server/ea179819/files/edit#/ztmp.js
--test start line
-line 2
-test
-this is another line
+Version 1.0
 
-test no redeploy
+  - Initial Release
 
-scroll test
-f
-f
-d
-
-sd
-sa
-fsd
-f
-df
-ds
-f
-we
-f
-
-ds
-f
-w
-e
-f
-ds
-fd
-
-e
-f
-ewf
-
-f
-e
-f
-e
+  - Support for all .schem .schematic and .litematic files
+  - 3 output methods covering Build Packs, McStructures, and Command Dumps
+  - Build hollowing
+  - Anti falling blocks
+  - 360 degree build rotation
+  - X,Y,Z build mirroring
+  - Simple command builder UI
