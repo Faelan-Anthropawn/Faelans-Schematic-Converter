@@ -15,7 +15,6 @@
 <div class="flex flex-col items-center justify-center min-h-screen p-4 sm:p-6 lg:p-8">
 
   <header class="mb-10 flex items-center">
-    <!-- Use GitHub raw for icon -->
     <img src="https://raw.githubusercontent.com/Faelan-Anthropawn/Faelans-Schematic-Converter/refs/heads/main/icon.png" alt="App Icon" class="w-28 h-28 mr-4"> 
     <div>
       <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Faelans</h1>
@@ -30,7 +29,7 @@
         <button id="downloadBtn"
           class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg flex items-center justify-center transition-colors">
           <span class="material-icons mr-2">download</span>
-          Download
+          Download Latest Release
         </button>
       </div>
 
@@ -71,18 +70,34 @@
 </div>
 
 <script>
+// Simple Markdown renderer for basic formatting
+function renderMarkdown(text) {
+  const html = text
+    .replace(/^### (.*$)/gim, '<h3 class="text-lg font-semibold">$1</h3>')
+    .replace(/^## (.*$)/gim, '<h2 class="text-xl font-semibold">$1</h2>')
+    .replace(/^# (.*$)/gim, '<h1 class="text-2xl font-bold">$1</h1>')
+    .replace(/^\* (.*$)/gim, '<li>$1</li>')
+    .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/gim, '<em>$1</em>')
+    .replace(/\[([^\]]+)\]\(([^\)]+)\)/gim, '<a class="text-blue-600 hover:underline" href="$2" target="_blank">$1</a>')
+    .replace(/\n/g, '<br>');
+  return html;
+}
+
 async function loadChangelog() {
   try {
-    const res = await fetch("https://raw.githubusercontent.com/Faelan-Anthropawn/Faelans-Schematic-Converter/refs/heads/main/changelog.txt");
+    const url = "https://raw.githubusercontent.com/Faelan-Anthropawn/Faelans-Schematic-Converter/refs/heads/main/changelog.txt?" + Date.now();
+    const res = await fetch(url);
     const text = await res.text();
-    const lines = text.split(/\r?\n/).filter(Boolean);
+    const lines = text.split(/\r?\n/); // keep blank lines
+
     if (lines.length > 0) {
       const downloadUrl = lines[0].trim();
       document.getElementById("downloadBtn").onclick = () => {
         window.open(downloadUrl, "_blank");
       };
-      document.getElementById("changelogBox").innerHTML =
-        lines.slice(1).join("<br>");
+      const changelogText = lines.slice(1).join("\n");
+      document.getElementById("changelogBox").innerHTML = renderMarkdown(changelogText);
     } else {
       document.getElementById("changelogBox").innerHTML = "No changelog entries found.";
     }
@@ -91,6 +106,7 @@ async function loadChangelog() {
     document.getElementById("changelogBox").innerHTML = "Failed to load changelog.";
   }
 }
+
 loadChangelog();
 </script>
 </body>
