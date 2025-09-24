@@ -52,8 +52,8 @@
     </header>
 
     <main class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
-        <!-- Addons (inactive for now) -->
-        <div class="bg-gray-200 dark:bg-gray-800 p-6 rounded-lg text-center flex flex-col items-center">
+        <!-- Addons -->
+        <div id="addons-btn" class="clickable bg-gray-200 dark:bg-gray-800 p-6 rounded-lg text-center flex flex-col items-center">
             <div class="bg-primary w-20 h-20 rounded-lg flex items-center justify-center mb-4">
                 <span class="material-icons text-white text-4xl">extension</span>
             </div>
@@ -96,8 +96,8 @@
             </p>
         </div>
 
-        <!-- Forged Realms (inactive for now) -->
-        <div class="bg-gray-200 dark:bg-gray-800 p-6 rounded-lg text-center flex flex-col items-center">
+        <!-- Forged Realms -->
+        <div id="forged-btn" class="clickable bg-gray-200 dark:bg-gray-800 p-6 rounded-lg text-center flex flex-col items-center">
             <div class="bg-primary w-20 h-20 rounded-lg flex items-center justify-center mb-4">
                 <span class="material-icons text-white text-4xl">terrain</span>
             </div>
@@ -123,6 +123,16 @@
     // Schematic Converter → local schemconvert.html
     document.getElementById("schem-btn").addEventListener("click", () => {
         window.location.href = "schemconvert.html";
+    });
+
+    // Addons → local addons.html
+    document.getElementById("addons-btn").addEventListener("click", () => {
+        window.location.href = "addons.html";
+    });
+
+    // Forged Realms → local forged.html
+    document.getElementById("forged-btn").addEventListener("click", () => {
+        window.location.href = "forged.html";
     });
 </script>
 </body>
