@@ -1,4 +1,4 @@
-https://control.sparkedhost.us/server/ea179819/files/edit#/ztmp.js
+https://app.mediafire.com/folder/zl0ahdihcotft
 # Version 1.0
 
 *  Initial Release
@@ -9,5 +9,7 @@ https://control.sparkedhost.us/server/ea179819/files/edit#/ztmp.js
 *  360 degree build rotation
 *  X,Y,Z build mirroring
 *  Simple command builder UI
+*  Support for all blocks up to 1.21.100
+
 
 
