@@ -3,37 +3,70 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Addons</title>
+<title>Faelan's Corner</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+            colors: {
+                primary: "#3B82F6",
+                "background-light": "#F3F4F6",
+                "background-dark": "#111827",
+                "card-light": "#FFFFFF",
+                "card-dark": "#1F2937",
+                "text-light": "#1F2937",
+                "text-dark": "#F9FAFB",
+                "subtext-light": "#6B7280",
+                "subtext-dark": "#9CA3AF"
+            },
+            fontFamily: { sans: ['Inter', 'sans-serif'] },
+            borderRadius: { 'DEFAULT': '0.5rem', 'lg': '0.75rem', 'xl': '1rem' },
+        },
+    },
+};
+</script>
 <style>
-    body { font-family: 'Inter', sans-serif; }
-    .clickable { cursor: pointer; transition: transform 0.2s; }
-    .clickable:hover { transform: scale(1.05); }
-    /* Modal overlay */
-    .modal-overlay { 
-        background: rgba(0,0,0,0.5); 
-        position: fixed; top:0; left:0; width:100%; height:100%; display:flex; justify-content:center; align-items:center; 
-    }
-    .modal-content {
-        background-color: white; max-width: 600px; width: 90%; border-radius: 0.5rem; padding: 1.5rem; position: relative;
-    }
-    .modal-close { position: absolute; top: 0.5rem; right: 0.5rem; cursor: pointer; font-size: 1.5rem; }
+body { font-family: 'Inter', sans-serif; }
+.clickable { cursor: pointer; transition: transform 0.2s; }
+.clickable:hover { transform: scale(1.05); }
+/* Modal overlay */
+.modal-overlay { 
+    background: rgba(0,0,0,0.5); 
+    position: fixed; top:0; left:0; width:100%; height:100%; display:flex; justify-content:center; align-items:center; 
+}
+.modal-content {
+    background-color: white; max-width: 600px; width: 90%; border-radius: 0.5rem; padding: 1.5rem; position: relative;
+    max-height: 80vh; overflow-y: auto;
+}
+.modal-close { position: absolute; top: 0.5rem; right: 0.5rem; cursor: pointer; font-size: 1.5rem; }
 </style>
 </head>
-<body class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark p-6">
+<body class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
+<div class="min-h-screen p-4 sm:p-6 md:p-8">
 
-<h1 class="text-3xl font-bold mb-6 text-center">Faelan's Addons</h1>
+<header class="flex justify-between items-center mb-8">
+    <button onclick="history.back()" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-card-light dark:bg-card-dark text-text-light dark:text-text-dark hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+        <span class="material-icons">arrow_back</span>
+        Back
+    </button>
+    <h1 class="text-2xl font-bold text-center flex-grow">Faelan's Corner</h1>
+    <div class="w-24"></div>
+</header>
 
-<div id="addonsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"></div>
+<main id="addonsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-8"></main>
+
+</div>
 
 <!-- Modal -->
 <div id="addonModal" class="hidden modal-overlay">
     <div class="modal-content dark:bg-gray-800 dark:text-white">
         <span id="modalClose" class="modal-close">&times;</span>
         <h2 id="modalTitle" class="text-2xl font-bold mb-4"></h2>
-        <p id="modalDescription" class="mb-4"></p>
+        <pre id="modalDescription" class="whitespace-pre-wrap mb-4"></pre>
         <a id="modalDownload" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg inline-block" href="#" download>
             Download
         </a>
@@ -43,12 +76,12 @@
 <script>
 const addons = [
   {
-    "name": "test",
-    "folder": "addons",
-    "icon": "addons/test/icon.png",
-    "description": "Short description",
-    "full": "addons/test/full.txt",
-    "download": "addons/test/test.mcpack"
+    "name": "Example Addon",
+    "folder": "example",
+    "icon": "addons/example/icon.png",
+    "description": "Short description from description.txt",
+    "full": "addons/example/full.txt",
+    "download": "addons/example/example.mcpack"
   },
   {
     "name": "Another Addon",
@@ -60,17 +93,16 @@ const addons = [
   }
 ];
 
-// Build buttons dynamically
+// Render addon cards
 const grid = document.getElementById('addonsGrid');
-
 addons.forEach(addon => {
     const card = document.createElement('div');
-    card.className = 'bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden clickable';
+    card.className = 'bg-card-light dark:bg-card-dark rounded-xl shadow-md overflow-hidden clickable';
     card.innerHTML = `
         <div class="p-6 flex flex-col items-center">
             <img src="${addon.icon}" alt="${addon.name} icon" class="w-20 h-20 mb-4"/>
             <h3 class="text-xl font-bold mb-2">${addon.name}</h3>
-            <p class="text-gray-600 dark:text-gray-300 text-center">${addon.description}</p>
+            <p class="text-subtext-light dark:text-subtext-dark text-center">${addon.description}</p>
         </div>
     `;
     card.addEventListener('click', () => showModal(addon));
@@ -103,14 +135,8 @@ function showModal(addon) {
         });
 }
 
-modalClose.addEventListener('click', () => {
-    modal.classList.add('hidden');
-});
-
-modal.addEventListener('click', e => {
-    if(e.target === modal) modal.classList.add('hidden');
-});
+modalClose.addEventListener('click', () => modal.classList.add('hidden'));
+modal.addEventListener('click', e => { if(e.target === modal) modal.classList.add('hidden'); });
 </script>
-
 </body>
 </html>
