@@ -9,6 +9,17 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
     body { font-family: 'Inter', sans-serif; }
+
+    /* Bullet list indentation */
+    #changelogBox ul {
+      list-style-type: disc;
+      padding-left: 2rem; /* Tab-length indent */
+      margin: 0.5rem 0;
+    }
+
+    #changelogBox li {
+      margin: 0.25rem 0;
+    }
   </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-gray-900 dark:text-gray-100">
@@ -70,17 +81,38 @@
 </div>
 
 <script>
-// Simple Markdown renderer for basic formatting
 function renderMarkdown(text) {
-  const html = text
-    .replace(/^### (.*$)/gim, '<h3 class="text-lg font-semibold">$1</h3>')
-    .replace(/^## (.*$)/gim, '<h2 class="text-xl font-semibold">$1</h2>')
-    .replace(/^# (.*$)/gim, '<h1 class="text-2xl font-bold">$1</h1>')
-    .replace(/^\* (.*$)/gim, '<li>$1</li>')
-    .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>')
-    .replace(/\*(.*?)\*/gim, '<em>$1</em>')
-    .replace(/\[([^\]]+)\]\(([^\)]+)\)/gim, '<a class="text-blue-600 hover:underline" href="$2" target="_blank">$1</a>')
-    .replace(/\n/g, '<br>');
+  const lines = text.split(/\r?\n/);
+  let html = "";
+  let inList = false;
+
+  lines.forEach(line => {
+    // Bullet list
+    if (/^\* /.test(line)) {
+      if (!inList) {
+        inList = true;
+        html += "<ul>";
+      }
+      html += `<li>${line.replace(/^\* /, "")}</li>`;
+    } else {
+      if (inList) {
+        html += "</ul>";
+        inList = false;
+      }
+      // Headers
+      if (/^### (.*)/.test(line)) {
+        html += `<h3 class="text-lg font-semibold">${line.replace(/^### /, "")}</h3>`;
+      } else if (/^## (.*)/.test(line)) {
+        html += `<h2 class="text-xl font-semibold">${line.replace(/^## /, "")}</h2>`;
+      } else if (/^# (.*)/.test(line)) {
+        html += `<h1 class="text-2xl font-bold">${line.replace(/^# /, "")}</h1>`;
+      } else {
+        html += line ? line + "<br>" : "&nbsp;<br>";
+      }
+    }
+  });
+
+  if (inList) html += "</ul>";
   return html;
 }
 
@@ -89,7 +121,7 @@ async function loadChangelog() {
     const url = "https://raw.githubusercontent.com/Faelan-Anthropawn/Faelans-Schematic-Converter/refs/heads/main/changelog.txt?" + Date.now();
     const res = await fetch(url);
     const text = await res.text();
-    const lines = text.split(/\r?\n/); // keep blank lines
+    const lines = text.split(/\r?\n/);
 
     if (lines.length > 0) {
       const downloadUrl = lines[0].trim();
