@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Forged Realms</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+            colors: {
+                primary: "#3b82f6",
+                "background-light": "#f3f4f6",
+                "background-dark": "#111827",
+                "card-light": "#ffffff",
+                "card-dark": "#1f2937",
+                "text-light": "#1f2937",
+                "text-dark": "#f9fafb",
+                "subtext-light": "#6b7280",
+                "subtext-dark": "#9ca3af",
+            },
+            fontFamily: { sans: ['Inter', 'sans-serif'] },
+            borderRadius: { DEFAULT: "0.5rem" },
+        },
+    },
+};
+</script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark font-sans antialiased">
+<div class="min-h-screen flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8">
+
+<header class="w-full max-w-7xl mx-auto py-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-center text-text-light dark:text-text-dark flex-grow">Forged Realms</h1>
+    <button onclick="history.back()" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-card-light dark:bg-card-dark text-text-light dark:text-text-dark hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+        <span class="material-icons">arrow_back</span>
+        Back
+    </button>
+</header>
+
+<main class="w-full max-w-7xl mx-auto bg-card-light dark:bg-card-dark rounded-lg shadow-lg p-6 sm:p-8">
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 border-b border-gray-200 dark:border-gray-700 pb-6">
+<h2 class="text-2xl font-bold text-text-light dark:text-text-dark">Welcome to Forged Realms</h2>
+<div class="flex flex-col sm:flex-row sm:items-center sm:space-x-4 mt-4 sm:mt-0 text-sm">
+    <div class="flex items-center space-x-2">
+        <span class="font-semibold">Realm Code:</span>
+        <span class="bg-gray-200 dark:bg-gray-800 text-text-light dark:text-text-dark px-2 py-1 rounded">mdkfrnkwed</span>
+    </div>
+    <div class="flex items-center space-x-2 mt-2 sm:mt-0">
+        <span class="font-semibold">IP:</span>
+        <span class="bg-gray-200 dark:bg-gray-800 text-text-light dark:text-text-dark px-2 py-1 rounded">forged.miecra.fr</span>
+    </div>
+    <div class="flex items-center space-x-2 mt-2 sm:mt-0">
+        <span class="font-semibold">Port:</span>
+        <span class="bg-gray-200 dark:bg-gray-800 text-text-light dark:text-text-dark px-2 py-1 rounded">25791</span>
+    </div>
+</div>
+</div>
+
+<p class="text-subtext-light dark:text-subtext-dark mb-8">
+    We offer many features already and are constantly working to increase and improve. You can see some of them below but there's too much to fit everything here, so stop by and check it out.
+</p>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Cards -->
+    <div class="bg-background-light dark:bg-background-dark p-6 rounded-lg">
+        <div class="flex items-center mb-3">
+            <span class="material-icons text-primary mr-3 text-3xl">sports_esports</span>
+            <h3 class="text-lg font-bold text-text-light dark:text-text-dark">Boss Fights</h3>
+        </div>
+        <p class="text-subtext-light dark:text-subtext-dark">Battle new bosses with unique mechanics and valuable rewards</p>
+    </div>
+    <div class="bg-background-light dark:bg-background-dark p-6 rounded-lg">
+        <div class="flex items-center mb-3">
+            <span class="material-icons text-primary mr-3 text-3xl">home</span>
+            <h3 class="text-lg font-bold text-text-light dark:text-text-dark">Private Plots</h3>
+        </div>
+        <p class="text-subtext-light dark:text-subtext-dark">Claim your own protected space for you and your friends</p>
+    </div>
+    <div class="bg-background-light dark:bg-background-dark p-6 rounded-lg">
+        <div class="flex items-center mb-3">
+            <span class="material-icons text-primary mr-3 text-3xl">event</span>
+            <h3 class="text-lg font-bold text-text-light dark:text-text-dark">Server Events</h3>
+        </div>
+        <p class="text-subtext-light dark:text-subtext-dark">Participate in the many events and competitions across the server</p>
+    </div>
+    <div class="bg-background-light dark:bg-background-dark p-6 rounded-lg">
+        <div class="flex items-center mb-3">
+            <span class="material-icons text-primary mr-3 text-3xl">gpp_good</span>
+            <h3 class="text-lg font-bold text-text-light dark:text-text-dark">Ability Based PvP</h3>
+        </div>
+        <p class="text-subtext-light dark:text-subtext-dark">Skill-based combat with new custom abilities and mechanics</p>
+    </div>
+    <div class="bg-background-light dark:bg-background-dark p-6 rounded-lg">
+        <div class="flex items-center mb-3">
+            <span class="material-icons text-primary mr-3 text-3xl">explore</span>
+            <h3 class="text-lg font-bold text-text-light dark:text-text-dark">Dungeons</h3>
+        </div>
+        <p class="text-subtext-light dark:text-subtext-dark">Explore challenging dungeons with friends and earn rare loot</p>
+    </div>
+    <div class="bg-background-light dark:bg-background-dark p-6 rounded-lg">
+        <div class="flex items-center mb-3">
+            <span class="material-icons text-primary mr-3 text-3xl">paid</span>
+            <h3 class="text-lg font-bold text-text-light dark:text-text-dark">0 Pay to Win</h3>
+        </div>
+        <p class="text-subtext-light dark:text-subtext-dark">Fair gameplay for everyone - no purchasable advantages ever</p>
+    </div>
+</div>
+
+<div class="mt-6 bg-background-light dark:bg-background-dark p-6 rounded-lg col-span-1 md:col-span-2 lg:col-span-3">
+    <div class="flex items-center mb-3">
+        <span class="material-icons text-primary mr-3 text-3xl">add_circle</span>
+        <h3 class="text-lg font-bold text-text-light dark:text-text-dark">And Much More</h3>
+    </div>
+    <p class="text-subtext-light dark:text-subtext-dark">Mini events, Auction house, Missions, Prestiges, Blackmarkets, and so much more</p>
+</div>
+
+</main>
+</div>
+</body>
+</html>
