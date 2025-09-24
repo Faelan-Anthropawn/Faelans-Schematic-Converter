@@ -10,7 +10,3 @@ https://app.mediafire.com/folder/zl0ahdihcotft
 *  X,Y,Z build mirroring
 *  Simple command builder UI
 *  Support for all blocks up to 1.21.100
-
-
-
-
