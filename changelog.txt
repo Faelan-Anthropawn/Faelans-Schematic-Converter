@@ -1,7 +1,7 @@
 https://app.mediafire.com/folder/zl0ahdihcotft
 # Version 1.0
 
-*  Initial Release
+*  Initial Release (expect bugs just let me know of them so they can be fixed)
 *  Support for all .schem .schematic and .litematic files
 *  3 output methods covering Build Packs, McStructures, and Command Dumps
 *  Build hollowing
@@ -10,6 +10,7 @@ https://app.mediafire.com/folder/zl0ahdihcotft
 *  X,Y,Z build mirroring
 *  Simple command builder UI
 *  Support for all blocks up to 1.21.100
+
 
 
 
