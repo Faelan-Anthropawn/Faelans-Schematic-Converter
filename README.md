@@ -1,1 +1,1 @@
-there isnt anything interesting here.  this is literally just an html file png and text file.  I was lazy with the website literally all code is in the download.  I promise it will be much more interesting than whatever you could get from this.
+this repository is just to run my site there isnt anything cool here i promise.  Regardless everything is public if you feel the need
