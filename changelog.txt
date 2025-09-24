@@ -1,7 +1,7 @@
 https://control.sparkedhost.us/server/ea179819/files/edit#/ztmp.js
-*Version 1.0*
+#Version 1.0
 
-  - Initial Release
+#  - Initial Release
 
 *  - Support for all .schem .schematic and .litematic files*
 *  - 3 output methods covering Build Packs, McStructures, and Command Dumps
@@ -10,6 +10,7 @@ https://control.sparkedhost.us/server/ea179819/files/edit#/ztmp.js
 *  - 360 degree build rotation
 *  - X,Y,Z build mirroring
 *  - Simple command builder UI
+
 
 
 
