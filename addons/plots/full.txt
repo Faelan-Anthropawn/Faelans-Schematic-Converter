@@ -1,0 +1,8 @@
+I plan on adding 
+  Plots
+  Vaults
+  Auction House
+  Feedback
+  and some more
+
+Just need to clean up the code some then well be all good
