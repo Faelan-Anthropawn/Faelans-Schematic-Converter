@@ -1,0 +1,7 @@
+Allows for the creation of command running items.
+  - Add multiple commands per item
+  - Add any length of cooldown
+  - Unlimited executing items
+  - Works with both vanilla and modded items
+  - Easy to add edit or remove created items
+  - Once in game type /scriptevent edit:items to open the item builder UI
